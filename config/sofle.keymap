@@ -9,6 +9,20 @@
 #include <dt-bindings/zmk/bt.h>
 
 / {
+    combos {
+        compatible = "zmk,combos";
+
+        new_combo {
+            bindings = <&mo 2>;
+            key-positions = <56 23>;
+        };
+
+        new_combo {
+            bindings = <&kp LEFT_BRACKET>;
+            key-positions = <56 23>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
