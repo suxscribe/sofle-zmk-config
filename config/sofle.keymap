@@ -83,7 +83,7 @@
 
             sensor-bindings =
                 <&inc_dec_kp KP_PLUS KP_MINUS>,
-                <&inc_dec_kp UP_ARROW DOWN_ARROW>;
+                <&inc_dec_kp LC(F12) LC(F11)>;
         };
 
         caps_layer {
