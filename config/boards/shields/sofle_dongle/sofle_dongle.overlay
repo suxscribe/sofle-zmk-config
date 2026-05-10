@@ -24,6 +24,31 @@
 		events = <0>;
 	};
 
+	/* Physical encoders live on the halves; these disabled nodes + sensors exist so the central
+	 * enables CONFIG path for split BLE sensor (encoder) notifications and keymap sensor-bindings.
+	 */
+	left_encoder: encoder_left {
+		compatible = "alps,ec11";
+		a-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		b-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		steps = <80>;
+		status = "disabled";
+	};
+
+	right_encoder: encoder_right {
+		compatible = "alps,ec11";
+		a-gpios = <&pro_micro 20 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		b-gpios = <&pro_micro 21 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+		steps = <80>;
+		status = "disabled";
+	};
+
+	sensors: sensors {
+		compatible = "zmk,keymap-sensors";
+		sensors = <&left_encoder &right_encoder>;
+		triggers-per-rotation = <20>;
+	};
+
 	default_transform: keymap_transform_0 {
 		compatible = "zmk,matrix-transform";
 		columns = <16>;
